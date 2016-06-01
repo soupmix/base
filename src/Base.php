@@ -11,11 +11,11 @@ interface Base
 
     public function connect($config);
 
-    public function create($collection, $config);
+    public function create($collection);
 
-    public function drop($collection, $config);
+    public function drop($collection);
 
-    public function truncate($collection, $config);
+    public function truncate($collection);
 
     public function createIndexes($collection, $indexes);
 
