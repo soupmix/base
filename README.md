@@ -22,7 +22,7 @@ Simple PHP low level database adapters collection to handle CRUD operations. Thi
 It's recommended that you use [Composer](https://getcomposer.org/) to install Soupmix.
 
 ```bash
-$ composer require soupmix/base "~0.1"
+$ composer require soupmix/base "~0.5"
 ```
 
 This will install Soupmix and all required dependencies. Soupmix requires PHP 5.5.0 or newer, mongodb extension: 1.1.0 or newer, [mongo-php-library](https://github.com/mongodb/mongo-php-library) library  or newer form MongoDB, [elasticsearch-php](https://github.com/elastic/elasticsearch-php) library  or newer for Elasticsearch
@@ -120,7 +120,7 @@ $e->delete('users', $filter);
 
 
 // user's age lower_than_and_equal to 34 or greater_than_and_equal 36 but not 38
-$filter=[['age__lte'=>34,'age__gte'=>36],"age__not"=>38];
+$filter=[[['age__lte'=>34],['age__gte'=>36]],"age__not"=>38];
 
 //find users that has criteria encoded in $filter
 $docs = $e->find("users", $filter);
