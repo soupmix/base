@@ -11,7 +11,7 @@ interface Base
 
     public function connect($config);
 
-    public function create($collection);
+    public function create($collection, $fields);
 
     public function drop($collection);
 
@@ -32,4 +32,5 @@ interface Base
     public function query($query);
 
     public static function buildFilter($filter);
+
 }
