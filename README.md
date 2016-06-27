@@ -2,30 +2,37 @@
 
 
 [![Latest Stable Version](https://poser.pugx.org/soupmix/base/v/stable)](https://packagist.org/packages/soupmix/base) [![Total Downloads](https://poser.pugx.org/soupmix/base/downloads)](https://packagist.org/packages/soupmix/base) [![Latest Unstable Version](https://poser.pugx.org/soupmix/base/v/unstable)](https://packagist.org/packages/soupmix/base) [![License](https://poser.pugx.org/soupmix/base/license)](https://packagist.org/packages/soupmix/base)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/soupmix/base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/soupmix/base/)
 
-Simple PHP low level database adapters collection to handle CRUD operations. This library does not provide any ORM or ODM. 
+
+Simple database abstraction layer adapters collection to handle CRUD operations written in PHP. This library does not provide any ORM or ODM. 
 
 ## Adapters
 
 * **MongoDB: Exists**
 * **Elasticsearch: Exists**
 * Couchbase: Planned
-* MySQL: Planned
-* PostgreSQL: Planned
+* **Doctrine DBAL: Exists**
+** **MySQL**
+** **PostgreSQL**
+** **Microsoft SQL**
+** **Oracle**
+** **SQLite**
+
 
 
 
 
 ## Installation
+**This library contains only interface and abstract classes**. To use with a database you have to install the package written for that database. i.e: soupmix/mongodb for MongoDB;
 
 It's recommended that you use [Composer](https://getcomposer.org/) to install Soupmix.
 
 ```bash
-$ composer require soupmix/base "~0.5"
+$ composer require soupmix/base "~0.6"
 ```
 
-This will install Soupmix and all required dependencies. Soupmix requires PHP 5.5.0 or newer, mongodb extension: 1.1.0 or newer, [mongo-php-library](https://github.com/mongodb/mongo-php-library) library  or newer form MongoDB, [elasticsearch-php](https://github.com/elastic/elasticsearch-php) library  or newer for Elasticsearch
+This will install Soupmix and all required dependencies. Soupmix requires PHP 5.6.0 or newer.
+
 
 ## Documentation
 

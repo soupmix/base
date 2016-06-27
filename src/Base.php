@@ -29,7 +29,7 @@ interface Base
 
     public function find($collection, $filter, $fields = null, $sort = null, $start = 0, $limit = 25, $debug = false);
 
-    public function query($query);
+    public function query($collection);
 
     public static function buildFilter($filter);
 

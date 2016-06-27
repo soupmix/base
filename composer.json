@@ -1,8 +1,8 @@
 {
     "name": "soupmix/base",
     "type": "library",
-    "description": "Simple PHP database adapters to handle low level CRUD operations.",
-    "keywords": ["database","adapters","mongodb","elasticsearch"],
+    "description": "Simple database abstraction layer adapters collection to handle CRUD operations.",
+    "keywords": ["database", "adapters", "abstraction layer", "mongodb", "elasticsearch", "postgresql", "mysql", "oracle", "sel server", "sqlite"],
     "homepage": "https://github.com/soupmix/base",
     "license": "MIT",
     "authors": [
