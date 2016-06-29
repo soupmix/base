@@ -7,10 +7,8 @@ Base Interface
 
 interface Base
 {
-    public function __construct($config);
-
-    public function connect($config);
-
+    public function getConnection();
+    
     public function create($collection, $fields);
 
     public function drop($collection);
