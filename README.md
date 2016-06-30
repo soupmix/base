@@ -28,7 +28,7 @@ Simple database abstraction layer adapters collection to handle CRUD operations 
 It's recommended that you use [Composer](https://getcomposer.org/) to install Soupmix.
 
 ```bash
-$ composer require soupmix/base "~0.6"
+$ composer require soupmix/base "~0.7"
 ```
 
 This will install Soupmix and all required dependencies. Soupmix requires PHP 5.6.0 or newer.
@@ -45,15 +45,33 @@ $adapter_config = [];
 $adapter_config['db_name'] ='db_name';
 $adapter_config['connection_string']="mongodb://127.0.0.1";
 $adapter_config['options'] =[];
-$m=new Soupmix\Adapters\MongoDB($adapter_config);
+$config['db_name'] = $adapter_config['db_name];
+$client = new \MongoDB\Client($adapter_config['connection_string'], $adapter_config['options']);
+$m=new Soupmix\MongoDB($config, $client);
 
 // Connect to Elasticsearch Service
 $adapter_config             = [];
 $adapter_config['db_name']  = 'indexname';
 $adapter_config['hosts']    = ["127.0.0.1:9200"];
 $adapter_config['options']  = [];
+$config['db_name'] = $adapter_config['db_name];
+$client = \Elasticsearch\ClientBuilder::create()->setHosts($adapter_config['hosts'])->build();
+$e=new Soupmix\ElasticSearch($config, $client);
 
-$e=new Soupmix\Adapters\ElasticSearch($adapter_config);
+// Connect SQL Service 
+
+$config = [
+    'dbname'    => 'test',
+    'user'      => 'root',
+    'password'  => '',
+    'host'      => '127.0.0.1',
+    'port'      => 3306,
+    'charset'   => 'utf8',
+    'driver'    => 'pdo_mysql',
+];
+$client = \Doctrine\DBAL\DriverManager::getConnection($config);
+$sql = new \Soupmix\SQL(['db_name'=>$config['dbname']], $client);
+
 
 $docs = [];
 $docs[] = [
