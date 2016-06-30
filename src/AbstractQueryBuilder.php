@@ -7,6 +7,7 @@ use InvalidArgumentException;
 abstract class AbstractQueryBuilder
 {
     private static $orderTypes  = ['asc', 'desc'];
+    private $soupmix            = null;
     private $collection         = null;
     private $filters            = null;
     private $andFilters         = null;
@@ -19,9 +20,11 @@ abstract class AbstractQueryBuilder
     private $limit              = 25;
     private $join               = null;
 
-    public function __construct($collection)
+    public function __construct($collection, Base $soupmix)
     {
         $this->collection = $collection;
+        $this->soupmix = $soupmix;
+
         return $this;
     }
 
