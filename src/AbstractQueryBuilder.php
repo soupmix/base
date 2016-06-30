@@ -58,8 +58,8 @@ abstract class AbstractQueryBuilder
 
     public function orFilters(array $fieldNames)
     {
-        foreach ($fieldNames as $fieldName=>$value) {
-            $this->orFilters[] = [$fieldName=>$value];
+        foreach ($fieldNames as $fieldName => $value) {
+            $this->orFilters[] = [$fieldName => $value];
         }
         return $this;
     }
@@ -125,7 +125,7 @@ abstract class AbstractQueryBuilder
             throw new InvalidArgumentException('distinctField() Error: $fieldName must be a string, '
                 . gettype($fieldName) . " given");
         }
-        $this->distinctFieldName[]=$fieldName;
+        $this->distinctFieldName=$fieldName;
         return $this;
     }
 
