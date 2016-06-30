@@ -6,19 +6,19 @@ use InvalidArgumentException;
 
 abstract class AbstractQueryBuilder
 {
-    private static $orderTypes  = ['asc', 'desc'];
-    private $soupmix            = null;
-    private $collection         = null;
-    private $filters            = null;
-    private $andFilters         = null;
-    private $orFilters          = null;
-    private $fieldNames         = null;
-    private $distinctFieldName  = null;
-    private $sortFields         = null;
-    private $groupByFields      = null;
-    private $offset             = 0;
-    private $limit              = 25;
-    private $join               = null;
+    protected static $orderTypes  = ['asc', 'desc'];
+    protected $soupmix            = null;
+    protected $collection         = null;
+    protected $filters            = null;
+    protected $andFilters         = null;
+    protected $orFilters          = null;
+    protected $fieldNames         = null;
+    protected $distinctFieldName  = null;
+    protected $sortFields         = null;
+    protected $groupByFields      = null;
+    protected $offset             = 0;
+    protected $limit              = 25;
+    protected $join               = null;
 
     public function __construct($collection, Base $soupmix)
     {
