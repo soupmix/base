@@ -58,7 +58,9 @@ abstract class AbstractQueryBuilder
 
     public function orFilters(array $fieldNames)
     {
-        foreach ($fieldNames as $fieldName => $value) {
+        foreach ($fieldNames as $value) {
+            $fieldName = array_keys($value)[0];
+            $value = $value[$fieldName];
             $this->orFilters[] = [$fieldName => $value];
         }
         return $this;
