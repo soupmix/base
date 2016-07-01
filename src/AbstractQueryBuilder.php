@@ -52,7 +52,7 @@ abstract class AbstractQueryBuilder
             throw new InvalidArgumentException('orFilter() Error: $fieldNames must be a string '
                 . gettype($fieldName) . " given");
         }
-        $this->orFilters[] = [$fieldName=>$value];
+        $this->orFilters[] = [$fieldName => $value];
         return $this;
     }
 
@@ -73,10 +73,12 @@ abstract class AbstractQueryBuilder
         $this->fieldNames[]=$fieldName;
         return $this;
     }
-    public function returnFields(array $fieldNames)
+    public function returnFields(array $fieldNames=null)
     {
-         foreach ($fieldNames as $fieldName) {
-            $this->fieldNames[] = $fieldName;
+        if($fieldNames !== null ) {
+            foreach ($fieldNames as $fieldName) {
+                $this->fieldNames[] = $fieldName;
+            }
         }
         return $this;
     }
@@ -92,11 +94,13 @@ abstract class AbstractQueryBuilder
         return $this;
     }
 
-    public function sortFields(array $fieldNames)
+    public function sortFields(array $fieldNames=null)
     {
-        foreach ($fieldNames as $fieldName => $order) {
-            $order = (in_array($order, self::$orderTypes)) ? $order : 'asc';
-            $this->sortFields[$fieldName] = strtolower($order);
+        if ($fieldNames !== null) {
+            foreach ($fieldNames as $fieldName => $order) {
+                $order = (in_array($order, self::$orderTypes)) ? $order : 'asc';
+                $this->sortFields[$fieldName] = strtolower($order);
+            }
         }
         return $this;
     }
