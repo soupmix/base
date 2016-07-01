@@ -18,7 +18,7 @@ abstract class AbstractQueryBuilder
     protected $groupByFields      = null;
     protected $offset             = 0;
     protected $limit              = 25;
-    protected $join               = null;
+    protected $leftJoin           = null;
 
     public function __construct($collection, Base $soupmix)
     {
@@ -149,19 +149,19 @@ abstract class AbstractQueryBuilder
         return $this;
     }
 
-    public function join($joinCollection, array $filters, array $returnFieldNames=null)
+    public function leftJoin($joinCollection, array $filters, array $returnFieldNames=null)
     {
         if (!is_string($joinCollection)) {
-            throw new InvalidArgumentException('join() Error: $joinCollection must be a string, '
+            throw new InvalidArgumentException('leftJoin() Error: $joinCollection must be a string, '
                 . gettype($joinCollection) . " given");
         }
-        $this->join[$joinCollection] = [];
+        $this->leftJoin[$joinCollection] = [];
         foreach ($filters as $sourceField=>$joinField) {
-            $this->join[$joinCollection]['relations'][$sourceField] = $joinField;
+            $this->leftJoin[$joinCollection]['relations'][$sourceField] = $joinField;
         }
         if (is_array($returnFieldNames)) {
             foreach ($returnFieldNames as $returnFieldName) {
-                $this->join[$joinCollection]['returnFields'] = $returnFieldName;
+                $this->leftJoin[$joinCollection]['returnFields'] = $returnFieldName;
             }
         }
         return $this;
