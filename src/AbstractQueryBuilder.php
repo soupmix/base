@@ -8,6 +8,7 @@ abstract class AbstractQueryBuilder
 {
     protected static $orderTypes  = ['asc', 'desc'];
     protected $soupmix            = null;
+    protected $conn               = null;
     protected $collection         = null;
     protected $filters            = null;
     protected $andFilters         = null;
@@ -24,6 +25,7 @@ abstract class AbstractQueryBuilder
     {
         $this->collection = $collection;
         $this->soupmix = $soupmix;
+        $this->conn = $soupmix->getConnection();
         return $this;
     }
 
