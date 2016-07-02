@@ -29,6 +29,4 @@ interface Base
 
     public function query($collection);
 
-    public static function buildFilter($filter);
-
 }

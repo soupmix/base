@@ -24,7 +24,6 @@ abstract class AbstractQueryBuilder
     {
         $this->collection = $collection;
         $this->soupmix = $soupmix;
-
         return $this;
     }
 
@@ -40,7 +39,7 @@ abstract class AbstractQueryBuilder
 
     public function andFilters(array $fieldNames)
     {
-        foreach ($fieldNames as $field=>$value) {
+        foreach ($fieldNames as $field => $value) {
             $this->andFilters[$fieldNames] = $value;
         }
         return $this;
