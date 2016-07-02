@@ -41,8 +41,8 @@ abstract class AbstractQueryBuilder
 
     public function andFilters(array $fieldNames)
     {
-        foreach ($fieldNames as $field => $value) {
-            $this->andFilters[$fieldNames] = $value;
+        foreach ($fieldNames as $fieldName => $value) {
+            $this->andFilters[$fieldName] = $value;
         }
         return $this;
     }
