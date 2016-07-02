@@ -25,7 +25,7 @@ interface Base
 
     public function delete($collection, $filter);
 
-    public function find($collection, $filter, $fields = null, $sort = null, $start = 0, $limit = 25, $debug = false);
+    public function find($collection, $filter, $fields = null, $sort = null, $start = 0, $limit = 25);
 
     public function query($collection);
 
