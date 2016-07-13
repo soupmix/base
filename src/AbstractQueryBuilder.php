@@ -20,6 +20,9 @@ abstract class AbstractQueryBuilder
     protected $offset             = 0;
     protected $limit              = 25;
     protected $leftJoin           = null;
+    protected $innerJoin           = null;
+    protected $outerJoin           = null;
+    protected $rightJoin           = null;
 
     public function __construct($collection, Base $soupmix)
     {
@@ -158,17 +161,40 @@ abstract class AbstractQueryBuilder
 
     public function leftJoin($joinCollection, array $filters, array $returnFieldNames=null)
     {
+        return $this->addJoin($joinCollection, 'leftJoin', $filters, $returnFieldNames);
+    }
+
+    public function innerJoin($joinCollection, array $filters, array $returnFieldNames=null)
+    {
+        return $this->addJoin($joinCollection, 'innerJoin', $filters, $returnFieldNames);
+    }
+
+    public function join($joinCollection, array $filters, array $returnFieldNames=null)
+    {
+        return $this->innerJoin($joinCollection,  $filters, $returnFieldNames);
+    }
+
+    public function rightJoin($joinCollection, array $filters, array $returnFieldNames=null)
+    {
+        return $this->addJoin($joinCollection, 'rightJoin', $filters, $returnFieldNames);
+    }
+
+    public function outerJoin($joinCollection, array $filters, array $returnFieldNames=null)
+    {
+        return $this->addJoin($joinCollection, 'outerJoin', $filters, $returnFieldNames);
+    }
+
+    public function addJoin($joinCollection, $joinType, array $filters, array $returnFieldNames=null)
+    {
         if (!is_string($joinCollection)) {
-            throw new InvalidArgumentException('leftJoin() Error: $joinCollection must be a string, '
+            throw new InvalidArgumentException('addJoin() for '.$joinType.' Error: $joinCollection must be a string, '
                 . gettype($joinCollection) . " given");
         }
-        $this->leftJoin[$joinCollection] = [];
-        foreach ($filters as $sourceField=>$joinField) {
-            $this->leftJoin[$joinCollection]['relations'][$sourceField] = $joinField;
-        }
+        $this->{$joinType}[$joinCollection] = [];
+        $this->{$joinType}[$joinCollection]['relations'] = $filters;
         if (is_array($returnFieldNames)) {
             foreach ($returnFieldNames as $returnFieldName) {
-                $this->leftJoin[$joinCollection]['returnFields'] = $returnFieldName;
+                $this->{$joinType}[$joinCollection]['returnFields'][] = $returnFieldName;
             }
         }
         return $this;
