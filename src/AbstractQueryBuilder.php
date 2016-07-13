@@ -184,7 +184,7 @@ abstract class AbstractQueryBuilder
         return $this->addJoin($joinCollection, 'outerJoin', $filters, $returnFieldNames);
     }
 
-    public function addJoin($joinCollection, $joinType, array $filters, array $returnFieldNames=null)
+    private function addJoin($joinCollection, $joinType, array $filters, array $returnFieldNames=null)
     {
         if (!is_string($joinCollection)) {
             throw new InvalidArgumentException('addJoin() for '.$joinType.' Error: $joinCollection must be a string, '
