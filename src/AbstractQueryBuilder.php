@@ -142,7 +142,7 @@ abstract class AbstractQueryBuilder
     public function offset($offset)
     {
         if (!is_integer($offset)) {
-            throw new InvalidArgumentException('offset() Error: $fieldNames must be an integer, '
+            throw new InvalidArgumentException('offset() Error: $offset must be an integer, '
                 . gettype($offset) . " given");
         }
         $this->offset = $offset;
@@ -152,7 +152,7 @@ abstract class AbstractQueryBuilder
     public function limit($limit)
     {
         if (!is_integer($limit)) {
-            throw new InvalidArgumentException('limit() Error: $fieldNames must be an integer, '
+            throw new InvalidArgumentException('limit() Error: $limit must be an integer, '
                 . gettype($limit) . " given");
         }
         $this->limit = $limit;
