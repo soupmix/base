@@ -1,6 +1,7 @@
 <?php
 
 namespace Soupmix;
+
 /*
 Base Interface
 */
@@ -8,25 +9,31 @@ Base Interface
 interface Base
 {
     public function getConnection();
-    
-    public function create($collection, $fields);
 
-    public function drop($collection);
+    public function create(string $collection, array $fields);
 
-    public function truncate($collection);
+    public function drop(string $collection);
 
-    public function createIndexes($collection, $indexes);
+    public function truncate(string $collection);
 
-    public function insert($collection, $values);
+    public function createIndexes(string $collection, array $indexes);
 
-    public function get($collection, $docID);
+    public function insert(string $collection, array $values);
 
-    public function update($collection, $filter, $values);
+    public function get(string $collection, string $docID);
 
-    public function delete($collection, $filter);
+    public function update(string $collection, array $filter, array $values);
 
-    public function find($collection, $filter, $fields = null, $sort = null, $start = 0, $limit = 25);
+    public function delete(string $collection, array $filter);
 
-    public function query($collection);
+    public function find(
+        string $collection,
+        array $filter,
+        array $fields = null,
+        array $sort = null,
+        int $start = 0,
+        int $limit = 25
+    );
 
+    public function query(string $collection);
 }
