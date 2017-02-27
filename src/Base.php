@@ -20,7 +20,7 @@ interface Base
 
     public function insert(string $collection, array $values);
 
-    public function get(string $collection, string $docID);
+    public function get(string $collection, $docId);
 
     public function update(string $collection, array $filter, array $values);
 
