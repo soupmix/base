@@ -28,9 +28,9 @@ interface Base
 
     public function find(
         string $collection,
-        array $filter,
-        array $fields = null,
-        array $sort = null,
+        ?array $filter,
+        ?array $fields = null,
+        ?array $sort = null,
         int $start = 0,
         int $limit = 25
     );

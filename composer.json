@@ -13,11 +13,12 @@
         }
     ],
     "require": {
-        "php": "~7.0"
+        "php": "~7.1"
     },
     "autoload": {
-        "psr-4": {
-            "Soupmix\\": "src/"
-        }
+        "classmap": [
+            "src/Base.php",
+            "src/AbstractQueryBuilder.php"
+        ]
     }
 }
